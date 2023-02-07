@@ -19,6 +19,7 @@ public class MyControllerAdvice {
     }
     @ExceptionHandler(UnequeEmailException.class)
     public ResponseEntity<String> handleUniqueEmail(UnequeEmailException unequeEmailException){
+        System.out.println("fsgoejh");
         return new ResponseEntity<String>("Eamil already exist", HttpStatus.BAD_REQUEST);
     }
 }
