@@ -20,7 +20,7 @@ public class EmployeeService {
     }
 
     public EmployeeEntity addNewEmployee(EmployeeEntity employeeEntity) {
-//        Optional<EmployeeEmail> email_exist = employeeRepository.findByEmail(employeeEntity.getEmail());
+        EmployeeEntity employeeEmail = employeeRepository.findByEmail(employeeEntity.getEmail());
 
         if (employeeEntity.getName().isEmpty()){
             throw new EmptyInputException();
@@ -28,7 +28,10 @@ public class EmployeeService {
         else if (employeeEntity.getEmail().isEmpty()) {
             throw new EmptyInputException();
         }
-        else{
+        else if (employeeEmail != null) {
+            throw new UnequeEmailException();
+
+        } else{
             EmployeeEntity employee = employeeRepository.save(employeeEntity);
             return employee;
         }
