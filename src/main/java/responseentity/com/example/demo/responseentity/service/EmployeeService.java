@@ -23,17 +23,14 @@ public class EmployeeService {
         EmployeeEntity employeeEmail = employeeRepository.findByEmail(employeeEntity.getEmail());
 
 
-        if (employeeEntity.getName().isEmpty()){
+        if (employeeEntity.getName().isEmpty()) {
             throw new EmptyInputException();
-        }
-        else if (employeeEntity.getEmail().isEmpty()) {
+        } else if (employeeEntity.getEmail().isEmpty()) {
             throw new EmptyInputException();
-        }
-        else if (employeeEmail != null) {
+        } else if (employeeEmail != null) {
             throw new UnequeEmailException();
 
-        }
-        else{
+        } else {
             EmployeeEntity employee = employeeRepository.save(employeeEntity);
             return employee;
         }
@@ -41,20 +38,18 @@ public class EmployeeService {
 
     public List<EmployeeEntity> getEmployeeList() {
         List<EmployeeEntity> employeeEntities = employeeRepository.findAll();
-        if (employeeEntities.isEmpty()){
+        if (employeeEntities.isEmpty()) {
             throw new RecordNotFound();
-        }
-        else {
+        } else {
             return employeeEntities;
         }
     }
 
     public Optional<EmployeeEntity> findEmployeeById(Long id) {
         Optional<EmployeeEntity> employee = employeeRepository.findById(id);
-        if(employee.isEmpty()){
+        if (employee.isEmpty()) {
             throw new RecordNotFound();
-        }
-        else{
+        } else {
             return employee;
         }
     }
