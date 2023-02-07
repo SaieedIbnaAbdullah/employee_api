@@ -1,4 +1,5 @@
 package responseentity.com.example.demo.responseentity.advice;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,16 +11,17 @@ import responseentity.com.example.demo.responseentity.exception.UnequeEmailExcep
 @ControllerAdvice
 public class MyControllerAdvice {
     @ExceptionHandler(EmptyInputException.class)
-    public ResponseEntity<String> handleEmptyInput(EmptyInputException emptyInputException){
+    public ResponseEntity<String> handleEmptyInput(EmptyInputException emptyInputException) {
         return new ResponseEntity<String>("Empty input", HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(RecordNotFound.class)
-     public ResponseEntity<String> handleEmptyList(RecordNotFound recordNotFound){
-        return  new ResponseEntity<String>("Record not found", HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> handleEmptyList(RecordNotFound recordNotFound) {
+        return new ResponseEntity<String>("Record not found", HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(UnequeEmailException.class)
-    public ResponseEntity<String> handleUniqueEmail(UnequeEmailException unequeEmailException){
-        System.out.println("fsgoejh");
+    public ResponseEntity<String> handleUniqueEmailException(UnequeEmailException unequeEmailException) {
         return new ResponseEntity<String>("Eamil already exist", HttpStatus.BAD_REQUEST);
     }
 }
