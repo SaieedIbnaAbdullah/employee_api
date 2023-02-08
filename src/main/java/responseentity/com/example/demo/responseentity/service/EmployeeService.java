@@ -22,7 +22,6 @@ public class EmployeeService {
     public EmployeeEntity addNewEmployee(EmployeeEntity employeeEntity) {
         EmployeeEntity employeeEmail = employeeRepository.findByEmail(employeeEntity.getEmail());
 
-
         if (employeeEntity.getName().isEmpty()) {
             throw new EmptyInputException();
         } else if (employeeEntity.getEmail().isEmpty()) {
