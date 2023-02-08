@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import responseentity.com.example.demo.responseentity.dto.EmployeeDto;
 import responseentity.com.example.demo.responseentity.entity.EmployeeEntity;
 import responseentity.com.example.demo.responseentity.service.EmployeeService;
 
@@ -17,9 +18,16 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+    public EmployeeEntity mapDtoToEntity(EmployeeDto employeeDto){
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+        employeeEntity.setAge(employeeDto.getAge());
+        employeeEntity.setName(employeeDto.getName());
+        employeeEntity.setEmail(employeeDto.getEmail());
+        return employeeEntity;
+    }
     @PostMapping
-    public ResponseEntity<EmployeeEntity> addEmployee(@RequestBody EmployeeEntity employeeEntity){
-        EmployeeEntity employee = employeeService.addNewEmployee(employeeEntity);
+    public ResponseEntity<EmployeeEntity> addEmployee(@RequestBody EmployeeDto employeeDto){
+        EmployeeEntity employee = employeeService.addNewEmployee(mapDtoToEntity(employeeDto));
         final HttpHeaders httpHeaders= new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<EmployeeEntity>(employee, httpHeaders, HttpStatus.CREATED);

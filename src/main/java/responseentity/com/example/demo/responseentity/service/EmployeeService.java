@@ -1,6 +1,7 @@
 package responseentity.com.example.demo.responseentity.service;
 
 import org.springframework.stereotype.Service;
+import responseentity.com.example.demo.responseentity.dto.EmployeeDto;
 import responseentity.com.example.demo.responseentity.entity.EmployeeEntity;
 import responseentity.com.example.demo.responseentity.exception.EmptyInputException;
 import responseentity.com.example.demo.responseentity.exception.RecordNotFound;
@@ -30,8 +31,7 @@ public class EmployeeService {
             throw new UnequeEmailException();
 
         } else {
-            EmployeeEntity employee = employeeRepository.save(employeeEntity);
-            return employee;
+            return employeeRepository.save(employeeEntity);
         }
     }
 
