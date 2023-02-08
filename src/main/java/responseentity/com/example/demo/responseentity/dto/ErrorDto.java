@@ -1,16 +1,15 @@
 package responseentity.com.example.demo.responseentity.dto;
-import jakarta.websocket.OnMessage;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-@NoArgsConstructor
+import org.springframework.http.HttpStatusCode;
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class EmployeeDto {
-    private String name;
-    private String email;
-    private Integer age;
+public class ErrorDto {
+    private HttpStatusCode statusCode;
+    private String message ;
 }
