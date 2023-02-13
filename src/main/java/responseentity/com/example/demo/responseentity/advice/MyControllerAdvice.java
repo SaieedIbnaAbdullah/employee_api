@@ -1,38 +1,19 @@
 package responseentity.com.example.demo.responseentity.advice;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import responseentity.com.example.demo.responseentity.dto.ErrorDto;
-import responseentity.com.example.demo.responseentity.exception.EmptyInputException;
-import responseentity.com.example.demo.responseentity.exception.RecordNotFound;
-import responseentity.com.example.demo.responseentity.exception.UnequeEmailException;
+import responseentity.com.example.demo.responseentity.exception.CustomException;
 
 @ControllerAdvice
 public class MyControllerAdvice {
-    @ExceptionHandler(EmptyInputException.class)
-    public ResponseEntity<Object> handleEmptyInput(EmptyInputException emptyInputException) {
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<Object> handleEmptyInput(CustomException emptyInputException) {
         ErrorDto errorDto = new ErrorDto();
         errorDto.setMessage(emptyInputException.getMessage());
-        errorDto.setStatusCode(HttpStatusCode.valueOf(400));
+        errorDto.setErrorCode(emptyInputException.getHttpStatusCode());
         return ResponseEntity.badRequest().body(errorDto);
     }
 
-    @ExceptionHandler(RecordNotFound.class)
-    public ResponseEntity<Object> handleEmptyList(RecordNotFound recordNotFound) {
-        ErrorDto errorDto = new ErrorDto();
-        errorDto.setMessage("Not found");
-        errorDto.setStatusCode(HttpStatusCode.valueOf(400));
-        return ResponseEntity.ok().body(errorDto);
-    }
-
-    @ExceptionHandler(UnequeEmailException.class)
-    public ResponseEntity<Object> handleUniqueEmailException(UnequeEmailException unequeEmailException) {
-        ErrorDto errorDto = new ErrorDto();
-        errorDto.setMessage("Email already exist");
-        errorDto.setStatusCode(HttpStatusCode.valueOf(400));
-        return ResponseEntity.badRequest().body(errorDto);
-    }
 }
