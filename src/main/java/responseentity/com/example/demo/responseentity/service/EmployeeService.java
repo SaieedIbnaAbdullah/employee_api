@@ -22,15 +22,15 @@ public class EmployeeService {
         EmployeeEntity employeeEmail = employeeRepository.findByEmail(employeeEntity.getEmail());
 
         if (employeeEntity.getName().isEmpty()) {
-            throw new EmptyInputException();
-        }
-        else if (employeeEntity.getEmail().isEmpty()) {
-            throw new EmptyInputException();
+            throw new EmptyInputException("Name is required");
+        } else if (employeeEntity.getEmail().isEmpty()) {
+            throw new EmptyInputException("Email is required");
+        } else if (employeeEntity.getAge() == null) {
+            throw new EmptyInputException("Age is required");
+
         } else if (employeeEmail != null) {
             throw new UnequeEmailException();
-
-        }
-        else {
+        } else {
             return employeeRepository.save(employeeEntity);
         }
     }

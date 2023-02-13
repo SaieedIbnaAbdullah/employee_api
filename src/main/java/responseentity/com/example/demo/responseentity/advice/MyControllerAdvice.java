@@ -15,7 +15,7 @@ public class MyControllerAdvice {
     @ExceptionHandler(EmptyInputException.class)
     public ResponseEntity<Object> handleEmptyInput(EmptyInputException emptyInputException) {
         ErrorDto errorDto = new ErrorDto();
-        errorDto.setMessage("Input field empty");
+        errorDto.setMessage(emptyInputException.getMessage());
         errorDto.setStatusCode(HttpStatusCode.valueOf(400));
         return ResponseEntity.badRequest().body(errorDto);
     }
