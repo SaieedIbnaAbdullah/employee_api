@@ -20,15 +20,7 @@ public class EmployeeService {
 
     public EmployeeEntity addNewEmployee(EmployeeEntity employeeEntity) {
         EmployeeEntity employeeEmail = employeeRepository.findByEmail(employeeEntity.getEmail());
-
-        if (employeeEntity.getName().isEmpty()) {
-            throw new CustomEnumException(ErrorCodeMessageEnum.NAME_REQUIRED);
-        } else if (employeeEntity.getEmail().isEmpty()) {
-            throw new CustomEnumException(ErrorCodeMessageEnum.EMAIL_REQUIRED);
-        } else if (employeeEntity.getAge() == null) {
-            throw new CustomEnumException(ErrorCodeMessageEnum.AGE_REQUIRED);
-
-        } else if (employeeEmail != null) {
+        if (employeeEmail != null) {
             throw new CustomEnumException(ErrorCodeMessageEnum.EMAIL_ALREADY_EXIST);
         } else {
             return employeeRepository.save(employeeEntity);

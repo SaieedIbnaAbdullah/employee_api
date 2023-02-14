@@ -4,10 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import responseentity.com.example.demo.responseentity.dto.ErrorDto;
 import responseentity.com.example.demo.responseentity.exception.CustomEnumException;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class MyControllerAdvice {
     @ExceptionHandler(CustomEnumException.class)
     public ResponseEntity<Object> handleException(CustomEnumException customEnumException) {

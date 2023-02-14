@@ -1,5 +1,6 @@
 package responseentity.com.example.demo.responseentity.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,7 +40,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeEntity> addEmployee(@RequestBody EmployeeDTO employeeDto) {
+    public ResponseEntity<EmployeeEntity> addEmployee(@Valid @RequestBody EmployeeDTO employeeDto) {
         EmployeeEntity employee = employeeService.addNewEmployee(mapDtoToEntity(employeeDto));
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
