@@ -38,7 +38,7 @@ public class EmployeeService {
     public List<EmployeeEntity> getEmployeeList() {
         List<EmployeeEntity> employeeEntities = employeeRepository.findAll();
         if (employeeEntities.isEmpty()) {
-            throw new CustomException("Record not founded","404");
+            throw new CustomEnumException(ErrorCodeMessageEnum.RECORD_NOT_FOUND);
         } else {
             return employeeEntities;
         }
