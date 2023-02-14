@@ -2,8 +2,8 @@ package responseentity.com.example.demo.responseentity.exception;
 
 import lombok.Data;
 import lombok.Getter;
-
 @Data
+
 public class CustomException extends RuntimeException{
     private String message;
     private String httpStatusCode;
