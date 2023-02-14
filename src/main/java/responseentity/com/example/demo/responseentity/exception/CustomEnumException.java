@@ -9,8 +9,6 @@ import responseentity.com.example.demo.responseentity.errorEnumCodeMessage.Error
 
 @Getter
 @Setter
-
-
 public class CustomEnumException extends RuntimeException{
     ErrorCodeMessageEnum errorCodeMessageEnum;
     public CustomEnumException(ErrorCodeMessageEnum errorCodeMessageEnum){
