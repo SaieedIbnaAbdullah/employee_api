@@ -1,10 +1,5 @@
 package responseentity.com.example.demo.responseentity.errorEnumCodeMessage;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 public enum ErrorCodeMessageEnum {
     EMAIL_ALREADY_EXIST("400","Email already exist"),
     RECORD_NOT_FOUND("404", "Record not found"),

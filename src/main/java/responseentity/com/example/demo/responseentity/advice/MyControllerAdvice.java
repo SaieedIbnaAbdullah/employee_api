@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import responseentity.com.example.demo.responseentity.dto.ErrorDto;
-import responseentity.com.example.demo.responseentity.exception.CustomException;
+
 import responseentity.com.example.demo.responseentity.exception.CustomEnumException;
 
 @ControllerAdvice
