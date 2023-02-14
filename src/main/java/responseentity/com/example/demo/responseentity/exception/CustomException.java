@@ -7,9 +7,7 @@ import lombok.Getter;
 public class CustomException extends RuntimeException{
     private String message;
     private String httpStatusCode;
-    public CustomException(String message) {
-        this.message = message;
-    }
+
     public CustomException(String message, String httpStatusCode) {
         this.message = message;
         this.httpStatusCode = httpStatusCode;

@@ -5,14 +5,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import responseentity.com.example.demo.responseentity.dto.ErrorDto;
 import responseentity.com.example.demo.responseentity.exception.CustomException;
+import responseentity.com.example.demo.responseentity.exception.CustomEnumException;
 
 @ControllerAdvice
 public class MyControllerAdvice {
-    @ExceptionHandler(CustomException.class)
-    public ResponseEntity<Object> handleEmptyInput(CustomException emptyInputException) {
+    @ExceptionHandler(CustomEnumException.class)
+    public ResponseEntity<Object> handleEmptyInput(CustomEnumException customEnumException) {
         ErrorDto errorDto = new ErrorDto();
-        errorDto.setMessage(emptyInputException.getMessage());
-        errorDto.setErrorCode(emptyInputException.getHttpStatusCode());
+        errorDto.setMessage(String.valueOf(customEnumException.getErrorCodeMessageEnum().getMessage()));
+        errorDto.setErrorCode(String.valueOf(customEnumException.getErrorCodeMessageEnum().getCode()));
         return ResponseEntity.badRequest().body(errorDto);
     }
 
