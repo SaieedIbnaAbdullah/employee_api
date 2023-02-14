@@ -10,9 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EmployeeDTO {
-    @NotBlank(message = "Name is required")
-    @Size(min = 5, max = 150, message
-            = "Name must be between 5 and 150 characters")
+    @NotBlank
+    @Size(min = 5, max = 150)
     private String name;
     @NotBlank(message = "Email is required")
     @Email(message = "Give a valid email")

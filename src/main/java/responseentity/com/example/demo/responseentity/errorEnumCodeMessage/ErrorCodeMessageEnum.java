@@ -2,6 +2,7 @@ package responseentity.com.example.demo.responseentity.errorEnumCodeMessage;
 
 public enum ErrorCodeMessageEnum {
     EMAIL_ALREADY_EXIST("400","Email already exist"),
+    INVALID_REQUEST("101","Invalid param"),
     RECORD_NOT_FOUND("404", "Record not found");
     private final String code;
     private final String message;
