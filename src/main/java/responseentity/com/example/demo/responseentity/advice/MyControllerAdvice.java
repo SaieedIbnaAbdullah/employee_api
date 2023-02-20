@@ -29,12 +29,12 @@ public class MyControllerAdvice {
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errorMessage = fieldName + ": " + errorMessage;
+            errorMessage = fieldName + ":" + errorMessage;
             errorDto.setErrorCode(ErrorCodeMessageEnum.INVALID_REQUEST.getCode());
             errorDto.setMessage(errorMessage);
 
         });
         return errorDto;
     }
-    
+
 }

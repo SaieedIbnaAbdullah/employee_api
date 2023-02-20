@@ -57,8 +57,8 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeDTOS, HttpStatus.OK);
     }
 
-    @GetMapping(path = "{id}")
-    public ResponseEntity<Optional<EmployeeEntity>> employeeById(@PathVariable("id") Long id) {
+    @GetMapping("/getEmployee")
+    public ResponseEntity<Optional<EmployeeEntity>> employeeById(@RequestParam Long id) {
         Optional<EmployeeEntity> employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<Optional<EmployeeEntity>>(employee, HttpStatus.FOUND);
     }

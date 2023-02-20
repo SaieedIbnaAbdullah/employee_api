@@ -1,4 +1,5 @@
 package responseentity.com.example.demo.responseentity.dto;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,8 +17,8 @@ public class EmployeeDTO {
     @NotBlank(message = "Email is required")
     @Email(message = "Give a valid email")
     private String email;
-    @NotNull(message = "Age should not be empty")
-    @Min(value = 10, message = "Age should not be less than 10")
-    @Max(value = 60, message = "Age should not be greater than 60")
+    @NotNull
+    @Min(value = 20, message = "Age not less then 20")
+    @Max(value = 60, message = "Age not greater then 20")
     private Integer age;
 }
